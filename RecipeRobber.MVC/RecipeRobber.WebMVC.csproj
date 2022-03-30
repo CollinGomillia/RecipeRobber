@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -237,6 +238,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Recipe\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -255,6 +257,14 @@
     <ProjectReference Include="..\RecipeRobber.Data\RecipeRobber.Data.csproj">
       <Project>{3DE99BD1-33E9-4C5C-9F94-F73DAB3613F8}</Project>
       <Name>RecipeRobber.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RecipeRobber.Models\RecipeRobber.Models.csproj">
+      <Project>{98785b9f-8a2e-4610-8670-c6777caa234b}</Project>
+      <Name>RecipeRobber.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RecipeRobber.Services\RecipeRobber.Services.csproj">
+      <Project>{9307c908-6e39-4f5d-bdcb-5303bd654a31}</Project>
+      <Name>RecipeRobber.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

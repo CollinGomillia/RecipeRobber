@@ -54,7 +54,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryModels\CategoryCreate.cs" />
+    <Compile Include="CategoryModels\CategoryGet.cs" />
+    <Compile Include="FeedbackModels\FeedbackCreate.cs" />
+    <Compile Include="FeedbackModels\FeedbackDelete.cs" />
+    <Compile Include="FeedbackModels\FeedbackGet.cs" />
+    <Compile Include="IngredientModels\IngredientCreate.cs" />
+    <Compile Include="IngredientModels\IngredientDelete.cs" />
+    <Compile Include="IngredientModels\IngredientGet.cs" />
+    <Compile Include="IngredientModels\IngredientUpdate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecipeModels\RecipeCreate.cs" />
+    <Compile Include="RecipeModels\RecipeDelete.cs" />
+    <Compile Include="RecipeModels\RecipeGet.cs" />
+    <Compile Include="RecipeModels\RecipeUpdate.cs" />
+    <Compile Include="StepModels\StepCreate.cs" />
+    <Compile Include="StepModels\StepDelete.cs" />
+    <Compile Include="StepModels\StepGet.cs" />
+    <Compile Include="StepModels\StepUpdate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
