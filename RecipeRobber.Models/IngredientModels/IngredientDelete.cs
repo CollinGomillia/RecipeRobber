@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace RecipeRobber.Models.IngredientModels
 {
-    class IngredientDelete
+    public class IngredientDelete
     {
+        public int IngredientId { get; set; }
+        public int RecipeId { get; set; }
+        public Guid OwnerId { get; set; }
+
     }
 }

@@ -16,7 +16,7 @@ namespace RecipeRobber.Data
         [Required]
         public string CustomaryUnit { get; set; }
         [Required]
-        public double Measurment { get; set; }
+        public double Measurement { get; set; }
 
     }
 }

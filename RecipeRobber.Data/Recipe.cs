@@ -22,8 +22,12 @@ namespace RecipeRobber.Data
         public int MakeTime { get; set; }
         public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.Now;
         public DateTimeOffset? ModifiedAt { get; set; }
+
+        [ForeignKey("Category")]
+        public int CategoryId { get; set; }
+        public virtual Category Category { get; set; }
+
         public virtual ICollection<Feedback> Feedbacks { get; set; }
-        public virtual ICollection<Category> Categories { get; set; }
         public virtual ICollection<Ingredient> Ingredients { get; set; }
         public virtual ICollection<Step> Steps { get; set; }
     }

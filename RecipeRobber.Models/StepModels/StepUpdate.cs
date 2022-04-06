@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace RecipeRobber.Models.StepModels
 {
-    class StepUpdate
+    public class StepUpdate
     {
+        public int StepId { get; set; }
+        public string Instruction { get; set; }
     }
 }

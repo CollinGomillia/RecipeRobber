@@ -77,5 +77,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RecipeRobber.Data\RecipeRobber.Data.csproj">
+      <Project>{3DE99BD1-33E9-4C5C-9F94-F73DAB3613F8}</Project>
+      <Name>RecipeRobber.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
