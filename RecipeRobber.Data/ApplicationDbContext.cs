@@ -16,7 +16,13 @@ namespace RecipeRobber.Data
         {
             return new ApplicationDbContext();
         }
+        public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Recipe> Recipes { get; set; }
+        public DbSet<Step> Steps { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
     }
+   
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
     {
         public IdentityUserLoginConfiguration()

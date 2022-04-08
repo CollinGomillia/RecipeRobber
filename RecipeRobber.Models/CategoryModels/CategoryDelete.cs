@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecipeRobber.Services
+namespace RecipeRobber.Models.CategoryModels
 {
-    public class StepService
+    public class CategoryDelete
     {
-
+        public int CategoryId { get; set; }
     }
 }

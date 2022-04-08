@@ -11,9 +11,10 @@ namespace RecipeRobber.Data
     {
         [Key]
         public int CategoryId { get; set; }
+
         [Required]
         public string CategoryType { get; set; }
-
+        public Guid OwnerId { get; set; }
         public virtual ICollection<Recipe> Recipes { get; set; } = new List<Recipe>();
     }
 }

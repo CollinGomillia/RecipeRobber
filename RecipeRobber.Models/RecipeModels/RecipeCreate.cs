@@ -25,8 +25,9 @@ namespace RecipeRobber.Models.RecipeModels
         [Required]
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
-        public IEnumerable<IngredientGet> Ingredients { get; set; }
-        public IEnumerable<FeedbackGet> Feedbacks { get; set; }
-        public IEnumerable<StepGet> Steps { get; set; }
+        [Required]
+        public ICollection<int> IngredientId { get; set; }
+        public ICollection<int> FeedbackId { get; set; }
+        public ICollection<int> StepId { get; set; }
     }
 }
