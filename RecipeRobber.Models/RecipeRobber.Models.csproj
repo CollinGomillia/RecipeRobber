@@ -75,6 +75,7 @@
     <Compile Include="StepModels\StepCreate.cs" />
     <Compile Include="StepModels\StepDelete.cs" />
     <Compile Include="StepModels\StepGet.cs" />
+    <Compile Include="StepModels\StepList.cs" />
     <Compile Include="StepModels\StepUpdate.cs" />
   </ItemGroup>
   <ItemGroup>

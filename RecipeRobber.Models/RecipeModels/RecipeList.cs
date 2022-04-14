@@ -13,5 +13,7 @@ namespace RecipeRobber.Models.RecipeModels
         public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.Now;
         public DateTimeOffset? ModifiedAt { get; set; }
         public int CategoryId { get; set; }
+        public string CategoryType { get; set; }
+
     }
 }

@@ -12,6 +12,7 @@ namespace RecipeRobber.Models.RecipeModels
     {
         public int RecipeId { get; set; }
         public string RecipeName { get; set; }
+        public int MakeTime { get; set; }
 
         [ForeignKey(nameof(ApplicationUser))]
         public string UserId { get; set; }

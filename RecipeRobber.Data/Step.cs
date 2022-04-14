@@ -12,6 +12,9 @@ namespace RecipeRobber.Data
     {
         [Key]
         public int StepId { get; set; }
+
+        public Guid OwnerId { get; set; }
+
         [Required]
         public string Instruction { get; set; }
 
