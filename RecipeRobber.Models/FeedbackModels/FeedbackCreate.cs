@@ -14,6 +14,7 @@ namespace RecipeRobber.Models.FeedbackModels
         public string Comment { get; set; }
         [Required]
         public int Rating { get; set; }
+
         [Required]
         public int RecipeId { get; set; }
         public RecipeGet RecipeGet { get; set; }

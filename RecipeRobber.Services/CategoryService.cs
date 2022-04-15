@@ -52,6 +52,23 @@ namespace RecipeRobber.Services
             }
         }
 
+        public CategoryGet GetCategoryById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Categories
+                        .Single(e => e.CategoryId == id && e.OwnerId == _userId);
+                return
+                    new CategoryGet
+                    {
+                        CategoryType = entity.CategoryType,
+                        CategoryId = entity.CategoryId
+                    };
+            }
+        }
+
         public bool DeleteCategory(int categoryId)
         {
             using(ApplicationDbContext ctx = new ApplicationDbContext())
