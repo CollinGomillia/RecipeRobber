@@ -70,8 +70,11 @@ namespace RecipeRobber.Services
                         RecipeId = entity.RecipeId,
                         RecipeName = entity.RecipeName,
                         CreatedAt = entity.CreatedAt,
-                        ModifiedAt = entity.ModifiedAt
-
+                        ModifiedAt = entity.ModifiedAt,
+                        Ingredients = entity.Ingredients,
+                        Steps = entity.Steps,
+                        CategoryType = entity.CategoryType
+                        
                     };
             }
         }
@@ -92,7 +95,12 @@ namespace RecipeRobber.Services
                                          RecipeName = e.RecipeName,
                                          CreatedAt = e.CreatedAt,
                                          ModifiedAt = e.ModifiedAt,
-                                         CategoryId = e.CategoryId
+                                         CategoryId = e.CategoryId,
+                                         CategoryType = e.CategoryType,
+                                         Ingredients = e.Ingredients,
+                                         Steps = e.Steps
+
+                                         
                                      });
                 return query.ToArray();
                         
@@ -111,6 +119,10 @@ namespace RecipeRobber.Services
                 entity.RecipeId = model.RecipeId;
                 entity.CreatedAt = model.CreatedAt;
                 entity.ModifiedAt = model.ModifiedAt;
+                entity.CategoryType = model.CategoryType;
+                entity.Ingredients = (ICollection<Ingredient>)model.Ingredients;
+                entity.Steps = (ICollection<Step>)model.Steps;
+
 
                 return context.SaveChanges() == 1;
             }

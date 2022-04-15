@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RecipeRobber.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +16,7 @@ namespace RecipeRobber.Models.RecipeModels
         public int CategoryId { get; set; }
         public string CategoryType { get; set; }
 
+        public virtual ICollection<Ingredient> Ingredients { get; set; }
+        public virtual ICollection<Step> Steps { get; set; }
     }
 }

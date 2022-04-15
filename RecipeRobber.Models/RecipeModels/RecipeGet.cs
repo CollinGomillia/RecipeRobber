@@ -14,6 +14,13 @@ namespace RecipeRobber.Models.RecipeModels
         public string RecipeName { get; set; }
         public int MakeTime { get; set; }
 
+        public string CategoryType { get; set; }
+
+
+        public virtual ICollection<Ingredient> Ingredients { get; set; }
+        public virtual ICollection<Step> Steps { get; set; }
+
+
         [ForeignKey(nameof(ApplicationUser))]
         public string UserId { get; set; }
         public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.Now;

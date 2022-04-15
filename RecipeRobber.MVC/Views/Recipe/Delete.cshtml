@@ -1,4 +1,4 @@
-﻿@
+﻿@model RecipeRobber.Models.RecipeModels.RecipeGet
 
 @{
     ViewBag.Title = "Delete";
@@ -6,3 +6,46 @@
 
 <h2>Delete</h2>
 
+<h3>Is this what you want to delete?</h3>
+<div>
+    <h4>Details</h4>
+    <hr />
+    <d1 class="d1-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RecipeId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RecipeId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RecipeName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RecipeName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MakeTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MakeTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+
+    </d1>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+
+</div>
