@@ -16,7 +16,7 @@ namespace RecipeRobber.Models.RecipeModels
         public int CategoryId { get; set; }
         public string CategoryType { get; set; }
 
-        public virtual ICollection<Ingredient> Ingredients { get; set; }
-        public virtual ICollection<Step> Steps { get; set; }
+        public virtual IList<Ingredient> Ingredients { get; set; }
+        public virtual IList<Step> Steps { get; set; }
     }
 }

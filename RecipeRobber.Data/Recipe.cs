@@ -12,14 +12,16 @@ namespace RecipeRobber.Data
     {
         [Key]
         public int RecipeId { get; set; }
-        [ForeignKey(nameof(ApplicationUser))]
+
+        [ForeignKey("ApplicationUser")]
         public string UserId { get; set; }
-        public virtual ApplicationUser User { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
+
         public Guid OwnerId { get; set; }
         [Required]
         public string RecipeName { get; set; }
         [Required]
-        public int MakeTime { get; set; }
+        public string MakeTime { get; set; }
         public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.Now;
         public DateTimeOffset? ModifiedAt { get; set; }
 
@@ -27,8 +29,8 @@ namespace RecipeRobber.Data
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
         public string CategoryType { get; set; }
-        public virtual ICollection<Feedback> Feedbacks { get; set; }
-        public virtual ICollection<Ingredient> Ingredients { get; set; }
-        public virtual ICollection<Step> Steps { get; set; }
+        public virtual IList<Feedback> Feedbacks { get; set; }
+        public virtual IList<Ingredient> Ingredients { get; set; }
+        public virtual IList<Step> Steps { get; set; }
     }
 }

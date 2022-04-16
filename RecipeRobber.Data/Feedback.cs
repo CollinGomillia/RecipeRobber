@@ -13,6 +13,7 @@ namespace RecipeRobber.Data
         [Key]
         public int AuthorId { get; set; }
         public Guid OwnerId { get; set; }
+
         [Required]
         [MaxLength(200, ErrorMessage = "The comment can not have more than 200 characters")]
         public string Comment { get; set; }

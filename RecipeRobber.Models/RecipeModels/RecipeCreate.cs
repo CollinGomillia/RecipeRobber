@@ -17,17 +17,18 @@ namespace RecipeRobber.Models.RecipeModels
         [Required]
         public string RecipeName { get; set; }
         [Required]
-        public int MakeTime { get; set; }
-        [Required]
+        public string MakeTime { get; set; }
+       
         public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.Now;
         public DateTimeOffset? ModifiedAt { get; set; }
 
         [Required]
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
+        public string CategoryType { get; set; }
         [Required]
-        public ICollection<int> IngredientId { get; set; }
-        public ICollection<int> FeedbackId { get; set; }
-        public ICollection<int> StepId { get; set; }
+        public IList<int> IngredientId { get; set; }
+        public IList<int> FeedbackId { get; set; }
+        public IList<int> StepId { get; set; }
     }
 }

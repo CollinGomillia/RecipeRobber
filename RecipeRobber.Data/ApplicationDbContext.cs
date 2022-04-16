@@ -31,11 +31,11 @@ namespace RecipeRobber.Data
         }
     }
 
-    public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityRole>
+    public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
     {
         public IdentityUserRoleConfiguration()
         {
-            HasKey(identityUserRole => identityUserRole.Id);
+            HasKey(identityUserRole => identityUserRole.UserId);
         }
     }
 }

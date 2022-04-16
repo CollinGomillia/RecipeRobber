@@ -20,6 +20,9 @@ namespace RecipeRobber.MVC.Controllers
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new RecipeService(userId);
             var model = service.GetRecipes();
+           
+           
+
 
             return View(model);
         }
@@ -74,7 +77,8 @@ namespace RecipeRobber.MVC.Controllers
                 RecipeName = detail.RecipeName,
                 ModifiedAt = detail.ModifiedAt,
                 CreatedAt = detail.CreatedAt,
-                MakeTime = detail.MakeTime
+                MakeTime = detail.MakeTime,
+                CategoryType = detail.CategoryType
             };
 
             return View(model);

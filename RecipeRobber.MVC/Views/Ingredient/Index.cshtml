@@ -1,0 +1,70 @@
+﻿@model IEnumerable<RecipeRobber.Models.IngredientModels.IngredientList>
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>Index</h2>
+<div class="jumbotron jumbotron2">
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New","Create")
+    </p>
+    @if (TempData.ContainsKey("SaveResult"))
+     {
+        <div class="alert alert-success fade in" role="alert">
+
+            <button type="button" class="close" date-dismiss="alert">
+                <span>&times;</span>
+            </button>
+            @TempData["SaveResult"]
+        </div>
+     }
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RecipeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IngredientId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ingredients)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Measurement)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomaryUnit)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IngredientId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomaryUnit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Measurement)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Ingredients)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+</table>

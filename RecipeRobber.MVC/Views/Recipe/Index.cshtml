@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<RecipeRobber.Models.RecipeModels.RecipeList>
 
+
 @{
     ViewBag.Title = "Index";
 }
@@ -39,33 +40,37 @@
         <th>
             @Html.DisplayNameFor(model => model.ModifiedAt)
         </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecipeId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecipeName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayNameFor(model => model.ModifiedAt)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
+       
     }
+        <th></th>
+        </tr>
 
-</table>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RecipeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.RecipeName)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+
+    </table>

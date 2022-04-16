@@ -24,9 +24,8 @@ namespace RecipeRobber.Services
                     OwnerId = _userId,
                     RecipeName = model.RecipeName,
                     MakeTime = model.MakeTime,
-                    CreatedAt = model.CreatedAt,
-                    ModifiedAt = model.ModifiedAt,
-                    CategoryId = model.CategoryId
+                    CategoryType = model.CategoryType
+                    
                 };
 
             using (var context = new ApplicationDbContext())
@@ -120,8 +119,8 @@ namespace RecipeRobber.Services
                 entity.CreatedAt = model.CreatedAt;
                 entity.ModifiedAt = model.ModifiedAt;
                 entity.CategoryType = model.CategoryType;
-                entity.Ingredients = (ICollection<Ingredient>)model.Ingredients;
-                entity.Steps = (ICollection<Step>)model.Steps;
+                entity.Ingredients = (IList<Ingredient>)model.Ingredients;
+                entity.Steps = (IList<Step>)model.Steps;
 
 
                 return context.SaveChanges() == 1;
@@ -141,6 +140,36 @@ namespace RecipeRobber.Services
 
                 return ctx.SaveChanges() == 1;
             }
+        }
+
+        public static void InsertToList(Ingredient item)
+        {
+
+
+            List<Ingredient> ingredients = new List<Ingredient>();
+
+            ingredients.Add(item);
+
+
+        }
+
+        public static void DeleteFromList(Ingredient item)
+        {
+
+
+
+        }
+
+        public void DisplayList(IList<Ingredient> ingredients)
+        {
+            foreach(Ingredient Ingredient in ingredients)
+            {
+                Console.WriteLine(Ingredient);
+
+
+            }
+
+
         }
     }
 }
