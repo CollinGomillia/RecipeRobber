@@ -30,5 +30,10 @@ namespace RecipeRobber.Models.RecipeModels
         public IList<int> IngredientId { get; set; }
         public IList<int> FeedbackId { get; set; }
         public IList<int> StepId { get; set; }
+
+        [Required]
+        public string Ingredients { get; set; }
+        [Required]
+        public string Steps { get; set; }
     }
 }

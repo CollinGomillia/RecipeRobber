@@ -24,7 +24,9 @@ namespace RecipeRobber.Services
                     OwnerId = _userId,
                     RecipeName = model.RecipeName,
                     MakeTime = model.MakeTime,
-                    CategoryType = model.CategoryType
+                    CategoryType = model.CategoryType,
+                    Ingredients = model.Ingredients,
+                    Steps = model.Steps
                     
                 };
 
@@ -155,7 +157,9 @@ namespace RecipeRobber.Services
 
         public static void DeleteFromList(Ingredient item)
         {
+            List<Ingredient> ingredients = new List<Ingredient>();
 
+            ingredients.Remove(item);
 
 
         }
