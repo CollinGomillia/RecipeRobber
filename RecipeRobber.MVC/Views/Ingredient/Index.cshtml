@@ -4,15 +4,23 @@
     ViewBag.Title = "Index";
 }
 
+<style type="text/css">
+    .br {
+        display: block;
+        margin-bottom: 10em;
+    }
+</style>
+<span class="br"></span>
+
 <h2>Index</h2>
 <div class="jumbotron jumbotron2">
     <h2>Index</h2>
 
     <p>
-        @Html.ActionLink("Create New","Create")
+        @Html.ActionLink("Create New", "Create")
     </p>
     @if (TempData.ContainsKey("SaveResult"))
-     {
+    {
         <div class="alert alert-success fade in" role="alert">
 
             <button type="button" class="close" date-dismiss="alert">
@@ -20,11 +28,11 @@
             </button>
             @TempData["SaveResult"]
         </div>
-     }
+    }
 </div>
 <table class="table">
     <tr>
-      
+
         <th>
             @Html.DisplayNameFor(model => model.IngredientId)
         </th>
@@ -43,7 +51,7 @@
     @foreach (var item in Model)
     {
         <tr>
-           
+
             <td>
                 @Html.DisplayFor(modelItem => item.IngredientId)
             </td>
@@ -57,9 +65,9 @@
                 @Html.DisplayNameFor(model => model.Ingredients)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.IngredientId  }) |
-                @Html.ActionLink("Details", "Details", new { id=item.IngredientId  }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.IngredientId  })
+                @Html.ActionLink("Edit", "Edit", new { id = item.IngredientId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IngredientId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IngredientId })
             </td>
         </tr>
     }

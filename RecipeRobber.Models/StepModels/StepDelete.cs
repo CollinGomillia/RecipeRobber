@@ -14,10 +14,10 @@ namespace RecipeRobber.Models.StepModels
         [Required]
         public int StepId { get; set; }
 
-        [Required]
-        [ForeignKey(nameof(Recipe))]
-        public int RecipeId { get; set; }
+     //   [Required]
+       // [ForeignKey(nameof(Recipe))]
+      //  public int RecipeId { get; set; }
 
-        public string Instruction { get; set; }
+      //  public string Instruction { get; set; }
     }
 }

@@ -4,12 +4,19 @@
     ViewBag.Title = "Edit";
 }
 
+<style type="text/css">
+    .br {
+        display: block;
+        margin-bottom: 10em;
+    }
+</style>
+<span class="br"></span>
 <h2>Update</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>RecipeUpdate</h4>
         <hr />

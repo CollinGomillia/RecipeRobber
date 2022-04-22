@@ -13,10 +13,10 @@ namespace RecipeRobber.Models.RecipeModels
         public string RecipeName { get; set; }
         public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.Now;
         public DateTimeOffset? ModifiedAt { get; set; }
-        public int CategoryId { get; set; }
-        public string CategoryType { get; set; }
+      //  public int CategoryId { get; set; }
+      //  public string CategoryType { get; set; }
 
-        public virtual IList<Ingredient> Ingredients { get; set; }
-        public virtual IList<Step> Steps { get; set; }
+     //   public virtual IList<Ingredient> Ingredients { get; set; }
+      //  public virtual IList<Step> Steps { get; set; }
     }
 }

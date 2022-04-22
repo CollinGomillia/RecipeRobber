@@ -4,6 +4,13 @@
     ViewBag.Title = "Index";
 }
 
+<style type="text/css">
+    .br {
+        display: block;
+        margin-bottom: 10em;
+    }
+</style>
+<span class="br"></span>
 <h2>Index</h2>
 
 <div class="jumbotron jumbotron2">
@@ -40,17 +47,17 @@
     @foreach (var item in Model)
     {
         <tr>
-          
+
             <td>
                 @Html.DisplayFor(modelItem => item.Comment)
             </td>
-             <td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Rating)
             </td>
-          
+
             <td>
-                @Html.ActionLink("Details", "Details", new {  id=item.AuthorId  }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.AuthorId  })
+                @Html.ActionLink("Details", "Details", new { id = item.AuthorId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.AuthorId })
             </td>
         </tr>
     }

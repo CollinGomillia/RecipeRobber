@@ -4,6 +4,14 @@
     ViewBag.Title = "Index";
 }
 
+<style type="text/css">
+    .br {
+        display: block;
+        margin-bottom: 10em;
+    }
+</style>
+
+<span class="br"></span>
 <h2>Index</h2>
 
 <div class="jumbotron jumbotron2">
@@ -25,7 +33,7 @@
 </div>
 <table class="table">
     <tr>
-        
+
         <th>
             @Html.DisplayNameFor(model => model.CategoryId)
         </th>
@@ -44,10 +52,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryType)
             </td>
-           
+
             <td>
-                @Html.ActionLink("Details", "Details", new {  id=item.CategoryId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.CategoryId })
+                @Html.ActionLink("Details", "Details", new { id = item.CategoryId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId })
             </td>
         </tr>
     }

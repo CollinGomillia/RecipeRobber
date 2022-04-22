@@ -4,6 +4,14 @@
     ViewBag.Title = "Delete";
 }
 
+<style type="text/css">
+    .br {
+        display: block;
+        margin-bottom: 10em;
+    }
+</style>
+<span class="br"></span>
+
 <h2>Delete</h2>
 
 <h3>What are we deleting today?</h3>
@@ -36,16 +44,16 @@
         <dd>
             @Html.DisplayFor(model => model.CustomaryUnit)
         </dd>
-        
+
     </dl>
 
     @using (Html.BeginForm())
-     {
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-control no-color">
             <input type="submit" value="Delete" class="btn btn-default" />
-            @Html.ActionLink("Back to list","Index")
+            @Html.ActionLink("Back to list", "Index")
         </div>
-     }
+    }
 </div>

@@ -7,13 +7,13 @@ namespace RecipeRobber.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Final : IMigrationMetadata
+    public sealed partial class Almost : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Final));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Almost));
         
         string IMigrationMetadata.Id
         {
-            get { return "202204220055533_Final"; }
+            get { return "202204220139531_Almost"; }
         }
         
         string IMigrationMetadata.Source

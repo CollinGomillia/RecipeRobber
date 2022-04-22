@@ -4,6 +4,14 @@
     ViewBag.Title = "Delete";
 }
 
+<style type="text/css">
+    .br {
+        display: block;
+        margin-bottom: 10em;
+    }
+</style>
+<span class="br"></span>
+
 <h2>Delete</h2>
 
 <h3>Do you want to delete your rating?</h3>
@@ -35,7 +43,8 @@
         </dd>
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

@@ -19,10 +19,10 @@ namespace RecipeRobber.Models.RecipeModels
         public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.Now;
         public DateTimeOffset? ModifiedAt { get; set; }
 
-        [ForeignKey("Category")]
-        public int CategoryId { get; set; }
-        public string CategoryType { get; set; }
-        public IEnumerable<IngredientGet> Ingredients { get; set; }
-        public IEnumerable<StepGet> Steps { get; set; }
+       // [ForeignKey("Category")]
+      //  public int CategoryId { get; set; }
+       // public string CategoryType { get; set; }
+       // public IEnumerable<IngredientGet> Ingredients { get; set; }
+       // public IEnumerable<StepGet> Steps { get; set; }
     }
 }

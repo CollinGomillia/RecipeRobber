@@ -4,6 +4,14 @@
     ViewBag.Title = "Details";
 }
 
+<style type="text/css">
+    .br {
+        display: block;
+        margin-bottom: 10em;
+    }
+</style>
+<span class="br"></span>
+
 <h2>Details</h2>
 
 <div>
@@ -42,10 +50,10 @@
             @Html.DisplayFor(model => model.Measurement)
         </dd>
 
-     
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new {  id = Model.IngredientId }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IngredientId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

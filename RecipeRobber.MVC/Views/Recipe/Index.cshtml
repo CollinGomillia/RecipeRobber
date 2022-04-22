@@ -5,6 +5,13 @@
     ViewBag.Title = "Index";
 }
 
+<style type="text/css">
+    .br {
+        display: block;
+        margin-bottom: 10em;
+    }
+</style>
+<span class="br"></span>
 <h2>Index</h2>
 <div class="jumbotron jumbotron2">
     <h2>Index</h2>
@@ -31,33 +38,33 @@
         <th>
             @Html.DisplayNameFor(model => model.RecipeName)
         </th>
-      
-       
-       
-    
+
+
+
+
         <th></th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipeId)
+            </td>
+
+            <td>
+                @Html.DisplayNameFor(model => model.RecipeName)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.MakeTime)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RecipeId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RecipeId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RecipeId })
+            </td>
         </tr>
+    }
 
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RecipeId)
-                </td>
-               
-                <td>
-                    @Html.DisplayNameFor(model => model.RecipeName)
-                </td>
-                 <td>
-                    @Html.DisplayNameFor(model => model.MakeTime)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.RecipeId }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.RecipeId }) |
-                    @Html.ActionLink("Delete", "Delete", new {  id=item.RecipeId  })
-                </td>
-            </tr>
-        }
-
-    </table>
+</table>
