@@ -13,10 +13,10 @@
 <span class="br"></span>
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>CategoryCreate</h4>
         <hr />
@@ -38,5 +38,14 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index",routeValues: null, htmlAttributes: new { @class = "mybtn" })
 </div>
+<style type="text/css">
+    a.mybtn {
+        background-color:blue;
+        color: black;
+        display: inline-block;
+        padding: 4px 10px 4px 10px;
+        text-emphasis-color: black;
+    }
+</style>

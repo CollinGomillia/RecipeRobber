@@ -46,8 +46,18 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Back to List", "Index", routeValues: null, htmlAttributes: new { @class = "mybtn" })
         </div>
     }
 
 </div>
+
+<style type="text/css">
+    a.mybtn {
+        background-color: blue;
+        color: black;
+        display: inline-block;
+        padding: 4px 10px 4px 10px;
+        text-emphasis-color: black;
+    }
+</style>
