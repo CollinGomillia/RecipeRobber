@@ -3,7 +3,13 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<style type="text/css">
+    .br {
+        display: block;
+        margin-bottom: 15em;
+    }
+</style>
+<span class="br"></span>
 <h2>Index</h2>
 
 <div class="jumbotron jumbotron2">
@@ -44,9 +50,9 @@
                 @Html.DisplayFor(modelItem => item.Instruction)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.StepId }) |
-                @Html.ActionLink("Details", "Details", new {  id=item.StepId}) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.StepId })
+                @Html.ActionLink("Edit", "Edit", new { id = item.StepId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.StepId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.StepId })
             </td>
         </tr>
     }

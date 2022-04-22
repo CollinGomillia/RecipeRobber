@@ -3,13 +3,19 @@
 @{
     ViewBag.Title = "Create";
 }
-
+<style type="text/css">
+    .br {
+        display: block;
+        margin-bottom: 15em;
+    }
+</style>
+<span class="br"></span>
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Step Create</h4>
         <hr />
@@ -22,7 +28,7 @@
             </div>
         </div>
 
-       
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
