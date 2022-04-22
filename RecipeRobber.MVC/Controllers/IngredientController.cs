@@ -12,6 +12,7 @@ namespace RecipeRobber.MVC.Controllers
     [Authorize]
     public class IngredientController : Controller
     {
+
         // GET: Ingredient
         public ActionResult Index()
         {
@@ -24,55 +25,84 @@ namespace RecipeRobber.MVC.Controllers
 
         public ActionResult Create()
         {
+
             return View();
         }
 
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(IngredientCreate model)
+        {
+
+            if (!ModelState.IsValid) return View(model);
+
+
+            var service = CreateIngredientService();
+
+            if (service.CreateIngredient(model))
+            {
+                TempData["SaveResult"] = "Your category was created.";
+                return RedirectToAction("Index");
+            };
+
+            ModelState.AddModelError("", "Category not created.");
+
+            return View(model);
+
+        }
         private IngredientService CreateIngredientService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new IngredientService(userId);
             return service;
         }
+        public ActionResult Delete(int id)
+        {
+            var service = CreateIngredientService();
+            var model = service.GetIngredientById(id);
 
-        [HttpPost]
+            return View(model);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var service = CreateIngredientService();
+            var model = service.GetIngredientById(id);
+
+            return View(model);
+        }
+
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IngredientCreate model)
+        public ActionResult DeleteIngredient(int id)
         {
             var service = CreateIngredientService();
 
-            if (!ModelState.IsValid)
+            if (service.DeleteIngredient(id))
             {
-                return View(model);
-            }
-
-            if (service.CreateIngredient(model))
-            {
-                TempData["SaveResult"] = "Your ingredient was created.";
+                TempData["SaveResult"] = "Ingredient is deleted.";
                 return RedirectToAction("Index");
             }
 
-            return View(model);
+
+            return View();
         }
 
-        public ActionResult IngredientGet(int id)
-        {
-            var svc = CreateIngredientService();
-            var model = svc.GetIngredientById(id);
-
-            return View(model);
-        }
-        public ActionResult IngredientUpdate(int id)
+        public ActionResult Edit(int id)
         {
             var service = CreateIngredientService();
+
             var detail = service.GetIngredientById(id);
-            var model =
-                new IngredientUpdate
-                {
-                    Ingredients = detail.Ingredients,
-                    Measurement = detail.Measurement,
-                    CustomaryUnit = detail.CustomaryUnit
-                    
-                };
+
+            var model = new IngredientUpdate
+            {
+               IngredientId = detail.IngredientId,
+               Ingredients = detail.Ingredients,
+               Measurement = detail.Measurement,
+               CustomaryUnit = detail.CustomaryUnit
+            };
 
             return View(model);
         }
@@ -103,28 +133,5 @@ namespace RecipeRobber.MVC.Controllers
             return View(model);
         }
 
-        public ActionResult Delete(int id)
-        {
-            var service = CreateIngredientService();
-            var model = service.GetIngredientById(id);
-
-            return View(model);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteIngredient(int id)
-        {
-            var service = CreateIngredientService();
-
-            if (service.DeleteIngredient(id))
-            {
-                TempData["SaveResult"] = "Goodbye, Ingredients!";
-                return RedirectToAction("Index");
-            }
-
-
-            return View();
-        }
     }
 }

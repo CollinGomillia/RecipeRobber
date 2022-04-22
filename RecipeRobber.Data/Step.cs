@@ -12,15 +12,15 @@ namespace RecipeRobber.Data
     {
         [Key]
         public int StepId { get; set; }
-
+        [Required]
         public Guid OwnerId { get; set; }
 
         [Required]
         public string Instruction { get; set; }
 
-        [Required]
-        [ForeignKey(nameof(Recipe))]
-        public int RecipeId { get; set; }
-        public virtual Recipe Recipe { get; set; }
+        
+      //  [ForeignKey(nameof(Recipe))]
+      //  public int RecipeId { get; set; }
+      //  public virtual Recipe Recipe { get; set; }
     }
 }

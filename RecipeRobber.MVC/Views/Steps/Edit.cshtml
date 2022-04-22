@@ -1,20 +1,26 @@
 ﻿@model RecipeRobber.Models.StepModels.StepUpdate
 
 @{
-    ViewBag.Title = "Update";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Update Step</h2>
+<h2>Edit</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Step Update</h4>
+        <h4>StepUpdate</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.StepId)
+        <div class="form-group">
+            @Html.LabelFor(model => model.StepId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StepId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StepId, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Instruction, htmlAttributes: new { @class = "control-label col-md-2" })

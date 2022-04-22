@@ -36,7 +36,7 @@ namespace RecipeRobber.MVC.Controllers
         //CREATE recipe
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateRecipe(RecipeCreate model)
+        public ActionResult Create(RecipeCreate model)
         {
             var service = CreateRecipeService();
 
@@ -75,10 +75,8 @@ namespace RecipeRobber.MVC.Controllers
             {
                 RecipeId = detail.RecipeId,
                 RecipeName = detail.RecipeName,
-                ModifiedAt = detail.ModifiedAt,
-                CreatedAt = detail.CreatedAt,
-                MakeTime = detail.MakeTime,
-                CategoryType = detail.CategoryType
+                MakeTime = detail.MakeTime
+               
             };
 
             return View(model);
@@ -86,7 +84,7 @@ namespace RecipeRobber.MVC.Controllers
         //Recipe update
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult RecipeEdit(int id, RecipeUpdate model)
+        public ActionResult Edit(int id, RecipeUpdate model)
         {
             var service = CreateRecipeService();
 
@@ -109,8 +107,7 @@ namespace RecipeRobber.MVC.Controllers
             ModelState.AddModelError("", "Your recipe could not be updated.");
             return View(model);
         }
-        //Helper
-        [ActionName("Delete")]
+        
         public ActionResult Delete(int id)
         {
             var svc = CreateRecipeService();
@@ -118,11 +115,12 @@ namespace RecipeRobber.MVC.Controllers
 
             return View(model);
         }
+
         //Delete Recipe
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeletePost(int id)
+        public ActionResult DeleteRecipe(int id)
         {
             var service = CreateRecipeService();
 
@@ -133,7 +131,13 @@ namespace RecipeRobber.MVC.Controllers
             return RedirectToAction("Index");
         }
 
-        
+        public ActionResult Details(int id)
+        {
+            var service = CreateRecipeService();
+            var model = service.GetRecipeById(id);
+
+            return View(model);
+        }
 
 
     }

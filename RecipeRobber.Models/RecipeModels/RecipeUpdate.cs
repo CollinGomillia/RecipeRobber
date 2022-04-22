@@ -2,6 +2,7 @@
 using RecipeRobber.Models.StepModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -11,9 +12,10 @@ namespace RecipeRobber.Models.RecipeModels
 {
     public class RecipeUpdate
     {
+        [Required]
         public int RecipeId { get; set; }
         public string RecipeName { get; set; }
-        public int MakeTime { get; set; }
+        public string MakeTime { get; set; }
         public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.Now;
         public DateTimeOffset? ModifiedAt { get; set; }
 

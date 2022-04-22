@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RecipeRobber.Models.FeedbackModels.FeedbackGet>
+﻿@model IEnumerable<RecipeRobber.Models.CategoryModels.CategoryGet>
 
 @{
     ViewBag.Title = "Index";
@@ -25,14 +25,12 @@
 </div>
 <table class="table">
     <tr>
+        
         <th>
-            @Html.DisplayNameFor(model => model.Comment)
+            @Html.DisplayNameFor(model => model.CategoryId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AuthorId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rating)
+            @Html.DisplayNameFor(model => model.CategoryType)
         </th>
         <th></th>
     </tr>
@@ -40,17 +38,16 @@
     @foreach (var item in Model)
     {
         <tr>
-          
             <td>
-                @Html.DisplayFor(modelItem => item.Comment)
+                @Html.DisplayFor(modelItem => item.CategoryId)
             </td>
-             <td>
-                @Html.DisplayFor(modelItem => item.Rating)
-            </td>
-          
             <td>
-                @Html.ActionLink("Details", "Details", new {  id=item.AuthorId  }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.AuthorId  })
+                @Html.DisplayFor(modelItem => item.CategoryType)
+            </td>
+           
+            <td>
+                @Html.ActionLink("Details", "Details", new {  id=item.CategoryId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.CategoryId })
             </td>
         </tr>
     }

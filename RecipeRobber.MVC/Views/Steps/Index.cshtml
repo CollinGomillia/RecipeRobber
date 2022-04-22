@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RecipeRobber.Models.StepModels.StepList>
+﻿@model IEnumerable<RecipeRobber.Models.StepModels.StepGet>
 
 @{
     ViewBag.Title = "Index";
@@ -26,9 +26,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.RecipeId)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.StepId)
         </th>
         <th>
@@ -41,18 +38,15 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.RecipeId)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.StepId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Instruction)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new { id=item.StepId }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.StepId}) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.StepId })
             </td>
         </tr>
     }

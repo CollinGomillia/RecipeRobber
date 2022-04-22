@@ -12,18 +12,18 @@ namespace RecipeRobber.Models.RecipeModels
     {
         public int RecipeId { get; set; }
         public string RecipeName { get; set; }
-        public int MakeTime { get; set; }
+        public string MakeTime { get; set; }
 
-        public string CategoryType { get; set; }
-
-
-        public virtual ICollection<Ingredient> Ingredients { get; set; }
-        public virtual ICollection<Step> Steps { get; set; }
+       // public string CategoryType { get; set; }
 
 
-        [ForeignKey(nameof(ApplicationUser))]
-        public string UserId { get; set; }
-        public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.Now;
-        public DateTimeOffset? ModifiedAt { get; set; }
+      //  public virtual ICollection<Ingredient> Ingredients { get; set; }
+       // public virtual ICollection<Step> Steps { get; set; }
+
+
+      //  [ForeignKey(nameof(ApplicationUser))]
+      //  public string UserId { get; set; }
+          public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.Now;
+          public DateTimeOffset? ModifiedAt { get; set; }
     }
 }

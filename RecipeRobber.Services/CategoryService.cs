@@ -10,8 +10,6 @@ namespace RecipeRobber.Services
 {
     public class CategoryService
     {
-        public CategoryService() { }
-
         private readonly Guid _userId;
 
         public CategoryService(Guid userId)
@@ -21,13 +19,16 @@ namespace RecipeRobber.Services
 
         public bool CreateCategory(CategoryCreate model)
         {
-            Category entity =
+             var entity =
                 new Category()
                 {
-                    CategoryType = model.CategoryType,
-                    OwnerId = _userId
+                    OwnerId = _userId,
+                    CategoryId = model.CategoryId,
+                    CategoryType = model.CategoryType
+                  
                 };
-            using (ApplicationDbContext ctx = new ApplicationDbContext())
+
+            using (var ctx = new ApplicationDbContext())
             {
                 ctx.Categories.Add(entity);
                 return ctx.SaveChanges() == 1;
@@ -36,7 +37,7 @@ namespace RecipeRobber.Services
 
         public IEnumerable<CategoryGet> GetCategories()
         {
-            using (ApplicationDbContext ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
@@ -52,7 +53,7 @@ namespace RecipeRobber.Services
             }
         }
 
-        public CategoryGet GetCategoryById(int id)
+        public CategoryDetail GetCategoryById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -61,7 +62,7 @@ namespace RecipeRobber.Services
                         .Categories
                         .Single(e => e.CategoryId == id && e.OwnerId == _userId);
                 return
-                    new CategoryGet
+                    new CategoryDetail
                     {
                         CategoryType = entity.CategoryType,
                         CategoryId = entity.CategoryId
@@ -71,9 +72,9 @@ namespace RecipeRobber.Services
 
         public bool DeleteCategory(int categoryId)
         {
-            using(ApplicationDbContext ctx = new ApplicationDbContext())
+            using(var ctx = new ApplicationDbContext())
             {
-                Category entity =
+                 var entity =
                     ctx
                     .Categories
                     .Single(e => e.CategoryId == categoryId);

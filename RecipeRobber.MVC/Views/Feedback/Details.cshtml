@@ -1,4 +1,4 @@
-﻿@model RecipeRobber.Models.FeedbackModels.FeedbackGet
+﻿@model RecipeRobber.Models.FeedbackModels.FeedbackDetail
 
 @{
     ViewBag.Title = "Details";
@@ -34,18 +34,11 @@
             @Html.DisplayFor(model => model.Rating)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RecipeId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RecipeId)
-        </dd>
 
       
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id=Model.AuthorId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

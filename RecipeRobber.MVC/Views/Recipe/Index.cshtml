@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RecipeRobber.Models.RecipeModels.RecipeList>
+﻿@model IEnumerable<RecipeRobber.Models.RecipeModels.RecipeGet>
 
 
 @{
@@ -31,17 +31,10 @@
         <th>
             @Html.DisplayNameFor(model => model.RecipeName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedAt)
-        </th>
+      
        
-    }
+       
+    
         <th></th>
         </tr>
 
@@ -52,23 +45,17 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.RecipeId)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CategoryType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ModifiedAt)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedAt)
-                </td>
+               
                 <td>
                     @Html.DisplayNameFor(model => model.RecipeName)
                 </td>
-
+                 <td>
+                    @Html.DisplayNameFor(model => model.MakeTime)
+                </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "Edit", new { id=item.RecipeId }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.RecipeId }) |
+                    @Html.ActionLink("Delete", "Delete", new {  id=item.RecipeId  })
                 </td>
             </tr>
         }

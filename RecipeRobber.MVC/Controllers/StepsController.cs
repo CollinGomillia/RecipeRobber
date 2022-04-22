@@ -38,7 +38,7 @@ namespace RecipeRobber.MVC.Controllers
         //CREATE STEP
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateStep(StepCreate model)
+        public ActionResult Create(StepCreate model)
         {
             var service = StepCreateService();
 
@@ -56,10 +56,12 @@ namespace RecipeRobber.MVC.Controllers
             return View(model);
         }
 
-        
+
 
         //Update Step
-        public ActionResult Update(int id, StepUpdate model)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, StepUpdate model)
         {
             var service = StepCreateService();
 
@@ -85,7 +87,7 @@ namespace RecipeRobber.MVC.Controllers
             return View(model);
         }
 
-        public ActionResult Update(int id)
+        public ActionResult Edit(int id)
         {
             var service = StepCreateService();
             var detail = service.GetStepById(id);
@@ -120,6 +122,14 @@ namespace RecipeRobber.MVC.Controllers
 
             return RedirectToAction("Index");
            
+        }
+
+        public ActionResult Details(int id)
+        {
+            var service = StepCreateService();
+            var model = service.GetStepById(id);
+
+            return View(model);
         }
     }
 }

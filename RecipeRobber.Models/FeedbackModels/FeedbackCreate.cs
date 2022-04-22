@@ -10,13 +10,16 @@ namespace RecipeRobber.Models.FeedbackModels
 {
     public class FeedbackCreate
     {
+        [Key]
+        public int AuthorId { get; set; }
         [Required]
         public string Comment { get; set; }
         [Required]
         public int Rating { get; set; }
 
-        [Required]
-        public int RecipeId { get; set; }
-        public RecipeGet RecipeGet { get; set; }
+       
+
+      //  public int RecipeId { get; set; }
+      //  public RecipeGet RecipeGet { get; set; }
     }
 }

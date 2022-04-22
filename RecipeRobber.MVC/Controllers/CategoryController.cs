@@ -24,37 +24,48 @@ namespace RecipeRobber.MVC.Controllers
 
         public ActionResult Create()
         {
+            
             return View();
         }
 
+      
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(CategoryCreate model)
+        {
+           
+            if (!ModelState.IsValid) return View(model);
+            
+
+            var service = CreateCategoryService();
+
+            if (service.CreateCategory(model))
+            {
+                TempData["SaveResult"] = "Your category was created.";
+                return RedirectToAction("Index");
+            };
+
+            ModelState.AddModelError("", "Category not created.");
+
+            return View(model);
+
+        }
         private CategoryService CreateCategoryService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new CategoryService(userId);
             return service;
         }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateCategory(CategoryCreate model)
+        public ActionResult Delete(int id)
         {
             var service = CreateCategoryService();
-
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-            if (service.CreateCategory(model))
-            {
-                TempData["SaveResult"] = "New category added.";
-                return RedirectToAction("Index");
-            }
+            var model = service.GetCategoryById(id);
 
             return View(model);
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Details(int id)
         {
             var service = CreateCategoryService();
             var model = service.GetCategoryById(id);

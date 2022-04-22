@@ -12,6 +12,7 @@ namespace RecipeRobber.Data
     {
         [Key]
         public int AuthorId { get; set; }
+        [Required]
         public Guid OwnerId { get; set; }
 
         [Required]
@@ -21,9 +22,9 @@ namespace RecipeRobber.Data
         [Range(1,5, ErrorMessage = "The rating should be between 1 and 5 stars")]
         public int Rating { get; set; }
 
-        [Required]
-        [ForeignKey(nameof(Recipe))]
-        public int RecipeId { get; set; }
-        public virtual Recipe Recipe { get; set; }
+       
+      //  [ForeignKey(nameof(Recipe))]
+      //  public int RecipeId { get; set; }
+      //  public virtual Recipe Recipe { get; set; }
     }
 }

@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace RecipeRobber.Models.RecipeModels
 {
-    public class RecipeDelete
+    public class RecipeDetail
     {
-        [Required]
+        [Key]
         public int RecipeId { get; set; }
-       
+        [Required]
+        public string Maketime { get; set; }
+        [Required]
+        public string RecipeName { get; set; }
     }
 }

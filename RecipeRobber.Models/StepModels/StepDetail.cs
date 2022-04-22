@@ -5,16 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecipeRobber.Models.CategoryModels
+namespace RecipeRobber.Models.StepModels
 {
-    public class CategoryCreate
+    public class StepDetail
     {
         [Key]
-        public int CategoryId { get; set; }
+        public int StepId { get; set; }
         [Required]
-        public string CategoryType { get; set; }
-       
-        
+        public string Instruction { get; set; }
 
     }
 }

@@ -1,4 +1,4 @@
-﻿@model RecipeRobber.Models.StepModels.StepDelete
+﻿@model RecipeRobber.Models.StepModels.StepDetail
 
 @{
     ViewBag.Title = "Delete";
@@ -19,14 +19,14 @@
             @Html.DisplayFor(model => model.StepId)
         </dd>
 
+
         <dt>
-            @Html.DisplayNameFor(model => model.RecipeId)
+            @Html.DisplayNameFor(model => model.Instruction)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.RecipeId)
+            @Html.DisplayFor(model => model.Instruction)
         </dd>
-
     </dl>
 
     @using (Html.BeginForm()) {

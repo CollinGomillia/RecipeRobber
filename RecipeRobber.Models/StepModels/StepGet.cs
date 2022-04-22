@@ -13,6 +13,6 @@ namespace RecipeRobber.Models.StepModels
         public int StepId { get; set; }
         public string Instruction { get; set; }
 
-        public int RecipeId { get; set; }
+        //public int RecipeId { get; set; }
     }
 }

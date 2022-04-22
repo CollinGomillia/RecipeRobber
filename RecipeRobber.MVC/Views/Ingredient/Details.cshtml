@@ -1,4 +1,4 @@
-﻿@model RecipeRobber.Models.IngredientModels.IngredientGet
+﻿@model RecipeRobber.Models.IngredientModels.IngredientDetail
 
 @{
     ViewBag.Title = "Details";
@@ -42,17 +42,10 @@
             @Html.DisplayFor(model => model.Measurement)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RecipeId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RecipeId)
-        </dd>
-
+     
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.IngredientId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

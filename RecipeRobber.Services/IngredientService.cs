@@ -22,12 +22,14 @@ namespace RecipeRobber.Services
             Ingredient entity =
                 new Ingredient()
                 {
+                    OwnerId = _userId,
                     CustomaryUnit = model.CustomaryUnit,
                     Measurement = model.Measurement,
-                    Ingredients = model.Ingredients,
-                    OwnerId = _userId
+                    Ingredients = model.Ingredients
+                    
                 };
-            using (ApplicationDbContext ctx = new ApplicationDbContext())
+
+            using (var ctx = new ApplicationDbContext())
             {
                 ctx.Ingredients.Add(entity);
                 return ctx.SaveChanges() == 1;
@@ -35,7 +37,7 @@ namespace RecipeRobber.Services
 
         }     
 
-        public IEnumerable<IngredientList> GetIngredients()
+        public IEnumerable<IngredientGet> GetIngredients()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -45,20 +47,20 @@ namespace RecipeRobber.Services
                        .Where(e => e.OwnerId == _userId)
                        .Select(
                              e=>
-                                new IngredientList
+                                new IngredientGet
                                 {
                                     IngredientId = e.IngredientId,
                                     Ingredients = e.Ingredients,
                                     CustomaryUnit = e.CustomaryUnit,
-                                    Measurement = e.Measurement,
-                                    RecipeId = e.RecipeId
+                                    Measurement = e.Measurement
+                                  
                                 }
                         );
                 return query.ToArray();
             }
         }
 
-        public IngredientGet GetIngredientById(int id)
+        public IngredientDetail GetIngredientById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -67,12 +69,11 @@ namespace RecipeRobber.Services
                         .Ingredients
                         .Single(e => e.IngredientId == id && e.OwnerId == _userId);
                 return
-                    new IngredientGet
+                    new IngredientDetail
                     {
                         IngredientId = entity.IngredientId,
                         Ingredients = entity.Ingredients,
                         Measurement = entity.Measurement,
-                        RecipeId = entity.RecipeId,
                         CustomaryUnit = entity.CustomaryUnit
                     };
             }
@@ -85,14 +86,15 @@ namespace RecipeRobber.Services
                 var entity =
                     ctx
                        .Ingredients
-                       .Single(e => e.IngredientId == model.IngredientId && e.OwnerId == _userId);
+                       .Single(e => e.IngredientId == model.IngredientId);
 
                 entity.Ingredients = model.Ingredients;
                 entity.Measurement = model.Measurement;
                 entity.CustomaryUnit = model.CustomaryUnit;
 
-                return ctx.SaveChanges() == 1;
+                ctx.SaveChanges();
 
+                return true;
             }
         }
 
@@ -103,7 +105,7 @@ namespace RecipeRobber.Services
                 var entity =
                     ctx
                        .Ingredients
-                       .Single(e => e.IngredientId == ingredientId && e.OwnerId == _userId);
+                       .Single(e => e.IngredientId == ingredientId);
 
                 ctx.Ingredients.Remove(entity);
 

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace RecipeRobber.MVC.Controllers
 {
+    [Authorize]
     public class FeedbackController : Controller
     {
         // GET: Feedback
@@ -19,15 +20,33 @@ namespace RecipeRobber.MVC.Controllers
             var model = service.GetFeedbacks();
 
             return View(model);
-            
         }
 
-        //Get feedback
-        public ActionResult Comment(int id)
+        public ActionResult Create()
         {
+
+            return View();
+        }
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(FeedbackCreate model)
+        {
+
+            if (!ModelState.IsValid) return View(model);
+
+
             var service = CreateFeedbackService();
 
-            var model = service.GetCommentById(id);
+            if (service.CreateFeedback(model))
+            {
+                TempData["SaveResult"] = "Your Feedback was created.";
+                return RedirectToAction("Index");
+            };
+
+            ModelState.AddModelError("", "Feedback not created.");
 
             return View(model);
 
@@ -38,56 +57,34 @@ namespace RecipeRobber.MVC.Controllers
             var service = new FeedbackService(userId);
             return service;
         }
-
-        //Post feedback
-        [HttpPost, ActionName("Comment")]
-        [ValidateAntiForgeryToken]
-        public ActionResult Comment(FeedbackCreate model)
+        public ActionResult Delete(int id)
         {
             var service = CreateFeedbackService();
-
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-            if (service.CreateReview(model))
-            {
-                TempData["SaveResult"] = "Comment added";
-                return RedirectToAction("Comment", model.RecipeId);
-            }
+            var model = service.GetFeedbackById(id);
 
             return View(model);
         }
-        //Delete feedback //Helper
-        public ActionResult FeedbackDelete(int id)
+
+        public ActionResult Details(int id)
         {
-            var feedService = CreateFeedbackService();
+            var service = CreateFeedbackService();
+            var model = service.GetFeedbackById(id);
 
-            var comment = feedService.GetCommentById(id);
-
-            var viewModel = new FeedbackGet
-            {
-                Comment = comment.Comment,
-                AuthorId = comment.AuthorId,
-                RecipeId = comment.RecipeId,
-                Rating = comment.Rating
-            };
-
-            return View(viewModel);
+            return View(model);
         }
-        //Delete feedback
-        [HttpPost, ActionName("FeedbackDelete")]
+
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteFeedback(int id)
         {
             var service = CreateFeedbackService();
 
-            if (service.DeleteComment(id))
+            if (service.DeleteFeedback(id))
             {
-                TempData["SaveResult"] = "Feedback deleted";
+                TempData["SaveResult"] = "Feedback is deleted.";
                 return RedirectToAction("Index");
             }
+
 
             return View();
         }

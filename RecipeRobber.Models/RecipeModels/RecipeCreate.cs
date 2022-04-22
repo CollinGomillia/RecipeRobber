@@ -18,22 +18,21 @@ namespace RecipeRobber.Models.RecipeModels
         public string RecipeName { get; set; }
         [Required]
         public string MakeTime { get; set; }
+      //  [Required]
+       // public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.Now;
+      //  public DateTimeOffset? ModifiedAt { get; set; }
+
+     //   [Required]
+       // [ForeignKey("Category")]
+      //  public int CategoryId { get; set; }
+       // public string CategoryType { get; set; }
+      
+       // public IList<int> IngredientId { get; set; }
+       // public IList<int> FeedbackId { get; set; }
+      //  public IList<int> StepId { get; set; }
        
-        public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.Now;
-        public DateTimeOffset? ModifiedAt { get; set; }
-
-        [Required]
-        [ForeignKey("Category")]
-        public int CategoryId { get; set; }
-        public string CategoryType { get; set; }
-        [Required]
-        public IList<int> IngredientId { get; set; }
-        public IList<int> FeedbackId { get; set; }
-        public IList<int> StepId { get; set; }
-
-        [Required]
-        public string Ingredients { get; set; }
-        [Required]
-        public string Steps { get; set; }
+       // public string Ingredients { get; set; }
+   
+      //  public string Steps { get; set; }
     }
 }

@@ -7,14 +7,11 @@ using System.Threading.Tasks;
 
 namespace RecipeRobber.Models.CategoryModels
 {
-    public class CategoryCreate
+    public class CategoryDetail
     {
         [Key]
         public int CategoryId { get; set; }
         [Required]
         public string CategoryType { get; set; }
-       
-        
-
     }
 }

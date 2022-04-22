@@ -18,38 +18,38 @@ namespace RecipeRobber.Services
         }
         public bool CreateRecipe(RecipeCreate model)
         {
+           
             Recipe entity =
                 new Recipe()
                 {
                     OwnerId = _userId,
                     RecipeName = model.RecipeName,
-                    MakeTime = model.MakeTime,
-                    CategoryType = model.CategoryType,
-                    Ingredients = model.Ingredients,
-                    Steps = model.Steps
+                    MakeTime = model.MakeTime
+                    
                     
                 };
 
             using (var context = new ApplicationDbContext())
             {
-                entity.Feedbacks = new List<Feedback>();
-                entity.Ingredients = new List<Ingredient>();
-                entity.Steps = new List<Step>();
-                foreach (int id in model.FeedbackId)
-                {
-                    var feedback = context.Feedbacks.Find(id);
-                    entity.Feedbacks.Add(feedback);
-                }
-                foreach (int id in model.IngredientId)
-                {
-                    var ingredient = context.Ingredients.Find(id);
-                    entity.Ingredients.Add(ingredient);
-                }
-                foreach (int id in model.StepId)
-                {
-                    var step = context.Steps.Find(id);
-                    entity.Steps.Add(step);
-                }
+               // entity.Feedbacks = new List<Feedback>();
+               // entity.Ingredients = new List<Ingredient>();
+               // entity.Steps = new List<Step>();
+
+             //   foreach (int id in model.FeedbackId)
+             //    {
+             //       var feedback = context.Feedbacks.Find(id);
+             //       entity.Feedbacks.Add(feedback);
+             //   }
+             ////   foreach (int id in model.IngredientId)
+             //   {
+             //       var ingredient = context.Ingredients.Find(id);
+             //       entity.Ingredients.Add(ingredient);
+             //   }
+             //   foreach (int id in model.StepId)
+             //   {
+             //       var step = context.Steps.Find(id);
+             //       entity.Steps.Add(step);
+             //   }
 
                 context.Recipes.Add(entity);
                 return context.SaveChanges() == 1;
@@ -71,16 +71,14 @@ namespace RecipeRobber.Services
                         RecipeId = entity.RecipeId,
                         RecipeName = entity.RecipeName,
                         CreatedAt = entity.CreatedAt,
-                        ModifiedAt = entity.ModifiedAt,
-                        Ingredients = entity.Ingredients,
-                        Steps = entity.Steps,
-                        CategoryType = entity.CategoryType
+                        ModifiedAt = entity.ModifiedAt
+                       
                         
                     };
             }
         }
 
-        public IEnumerable<RecipeList> GetRecipes()
+        public IEnumerable<RecipeGet> GetRecipes()
         {
             using (var context = new ApplicationDbContext())
             {
@@ -90,16 +88,14 @@ namespace RecipeRobber.Services
                            .Where(e => e.OwnerId == _userId)
                            .Select(
                                  e =>
-                                     new RecipeList
+                                     new RecipeGet
                                      {
                                          RecipeId = e.RecipeId,
                                          RecipeName = e.RecipeName,
-                                         CreatedAt = e.CreatedAt,
-                                         ModifiedAt = e.ModifiedAt,
-                                         CategoryId = e.CategoryId,
-                                         CategoryType = e.CategoryType,
-                                         Ingredients = e.Ingredients,
-                                         Steps = e.Steps
+                                         MakeTime = e.MakeTime,
+
+                                        
+                                         
 
                                          
                                      });
@@ -120,9 +116,7 @@ namespace RecipeRobber.Services
                 entity.RecipeId = model.RecipeId;
                 entity.CreatedAt = model.CreatedAt;
                 entity.ModifiedAt = model.ModifiedAt;
-                entity.CategoryType = model.CategoryType;
-                entity.Ingredients = (IList<Ingredient>)model.Ingredients;
-                entity.Steps = (IList<Step>)model.Steps;
+               
 
 
                 return context.SaveChanges() == 1;
@@ -136,7 +130,7 @@ namespace RecipeRobber.Services
                 var entity =
                     ctx
                          .Recipes
-                         .SingleOrDefault(e => e.RecipeId == recipeId && e.OwnerId == _userId);
+                         .SingleOrDefault(e => e.RecipeId == recipeId);
 
                 ctx.Recipes.Remove(entity);
 
@@ -144,36 +138,36 @@ namespace RecipeRobber.Services
             }
         }
 
-        public static void InsertToList(Ingredient item)
-        {
+       // public static void InsertToList(Ingredient item)
+        //{
 
 
-            List<Ingredient> ingredients = new List<Ingredient>();
+          //  List<Ingredient> ingredients = new List<Ingredient>();
 
-            ingredients.Add(item);
-
-
-        }
-
-        public static void DeleteFromList(Ingredient item)
-        {
-            List<Ingredient> ingredients = new List<Ingredient>();
-
-            ingredients.Remove(item);
+         //   ingredients.Add(item);
 
 
-        }
+      //  }
 
-        public void DisplayList(IList<Ingredient> ingredients)
-        {
-            foreach(Ingredient Ingredient in ingredients)
-            {
-                Console.WriteLine(Ingredient);
+      //  public static void DeleteFromList(Ingredient item)
+      //  {
+      //      List<Ingredient> ingredients = new List<Ingredient>();
 
-
-            }
+      //      ingredients.Remove(item);
 
 
-        }
+       // }
+
+      //  public void DisplayList(IList<Ingredient> ingredients)
+      //  {
+      //      foreach(Ingredient Ingredient in ingredients)
+      //      {
+        //        Console.WriteLine(Ingredient);
+
+
+       //     }
+
+
+      //  }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model RecipeRobber.Models.StepModels.StepGet
+﻿@model RecipeRobber.Models.StepModels.StepDetail
 
 @{
     ViewBag.Title = "Details";
@@ -26,17 +26,9 @@
             @Html.DisplayFor(model => model.Instruction)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RecipeId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RecipeId)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.StepId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

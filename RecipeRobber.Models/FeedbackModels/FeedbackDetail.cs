@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace RecipeRobber.Models.FeedbackModels
 {
-    public class FeedbackDelete
+    public class FeedbackDetail
     {
+        [Key]
+        public int AuthorId { get; set; }
         [Required]
         public string Comment { get; set; }
         [Required]

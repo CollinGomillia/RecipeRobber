@@ -17,5 +17,7 @@ namespace RecipeRobber.Models.StepModels
         [Required]
         [ForeignKey(nameof(Recipe))]
         public int RecipeId { get; set; }
+
+        public string Instruction { get; set; }
     }
 }

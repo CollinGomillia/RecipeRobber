@@ -13,7 +13,7 @@ namespace RecipeRobber.Models.CategoryModels
         public int CategoryId { get; set; }
         [Display(Name = "Category Type")]
         public string CategoryType { get; set; }
-        public override string ToString() => CategoryType;
+      
         
     }
 }

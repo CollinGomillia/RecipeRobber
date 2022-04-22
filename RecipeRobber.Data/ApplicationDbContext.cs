@@ -27,7 +27,7 @@ namespace RecipeRobber.Data
     {
         public IdentityUserLoginConfiguration()
         {
-            HasKey(identityUserLogin => identityUserLogin.UserId);
+            HasKey(iul => iul.UserId);
         }
     }
 
@@ -35,7 +35,7 @@ namespace RecipeRobber.Data
     {
         public IdentityUserRoleConfiguration()
         {
-            HasKey(identityUserRole => identityUserRole.UserId);
+            HasKey(iur => iur.UserId);
         }
     }
 }

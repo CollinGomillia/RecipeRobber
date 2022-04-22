@@ -17,12 +17,13 @@ namespace RecipeRobber.Services
             _userId = userId;
         }
 
-        public bool CreateReview(FeedbackCreate model)
+        public bool CreateFeedback(FeedbackCreate model)
         {
             var entity =
                 new Feedback()
                 {
                    OwnerId = _userId,
+                   AuthorId = model.AuthorId,
                    Comment = model.Comment,
                    Rating = model.Rating
                 };
@@ -34,7 +35,7 @@ namespace RecipeRobber.Services
             }
         }
 
-        public IEnumerable<FeedbackList> GetFeedbacks()
+        public IEnumerable<FeedbackGet> GetFeedbacks()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -44,18 +45,19 @@ namespace RecipeRobber.Services
                         .Where(e => e.OwnerId == _userId)
                         .Select(
                                e =>
-                                  new FeedbackList
+                                  new FeedbackGet
                                   {
                                       AuthorId = e.AuthorId,
                                       Comment = e.Comment,
-                                      Rating = e.Rating,
-                                      RecipeId = e.RecipeId
+                                      Rating = e.Rating
+                                      
                                   }
                         );
                 return query.ToArray();
             }
         }
-        public FeedbackGet GetCommentById(int id)
+       
+        public FeedbackDetail GetFeedbackById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -64,18 +66,18 @@ namespace RecipeRobber.Services
                         .Feedbacks
                         .Single(e => e.AuthorId == id && e.OwnerId == _userId);
                 return
-                    new FeedbackGet
+                    new FeedbackDetail
                     {
                         AuthorId = entity.AuthorId,
                         Comment = entity.Comment,
-                        Rating = entity.Rating,
-                        RecipeId = entity.RecipeId
+                        Rating = entity.Rating
+                       
 
                     };
             }
         }
 
-        public bool DeleteComment(int commentId)
+        public bool DeleteFeedback(int commentId)
         {
             using (var ctx = new ApplicationDbContext())
             {

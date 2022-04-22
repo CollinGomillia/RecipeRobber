@@ -14,7 +14,7 @@ namespace RecipeRobber.Models.FeedbackModels
         public string Comment { get; set; }
         public int Rating { get; set; }
         public int AuthorId { get; set; }
-        [ForeignKey(nameof(ApplicationUser))]
-        public string UserId { get; set; }
+       // [ForeignKey(nameof(ApplicationUser))]
+       // public string UserId { get; set; }
     }
 }

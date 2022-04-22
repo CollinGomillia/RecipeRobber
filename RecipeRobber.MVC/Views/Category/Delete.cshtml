@@ -1,4 +1,4 @@
-﻿@model RecipeRobber.Models.CategoryModels.CategoryDelete
+﻿@model RecipeRobber.Models.CategoryModels.CategoryDetail
 
 @{
     ViewBag.Title = "Delete";
@@ -18,8 +18,14 @@
         <dd>
             @Html.DisplayFor(model => model.CategoryId)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryType)
+        </dt>
 
-       
+        <dd>
+            @Html.DisplayFor(model => model.CategoryType)
+        </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {
